@@ -23,4 +23,13 @@ the data you need. We won't be focusing on using SQL code in this class, but
 it is good to know that you can use it.
 '''
 
+import sqlite3
 
+connect = sqlite3.connect("movies.db")
+cursor = connect.cursor()
+cursor.execute("SELECT title FROM Movie WHERE rating > 8.5;")
+
+for (title,) in cursor.fetchall():
+    print(title)
+
+connect.close()
